@@ -20,3 +20,5 @@ router.get("/:id",verifyAndAuthorization, userController.getUser);
 router.get("/",verifyAndAdmin, userController.getAllUser);
 
 module.exports = router
+
+//https://heovl.blog/videos/co-le-toi-da-quen-voi-viec-bi-nguoi-la-du-tren-xe-buyt

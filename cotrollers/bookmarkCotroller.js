@@ -4,11 +4,17 @@ const Bookmark = require("../models/bookmark");
 
 module.exports = {
     crateBookmark: async (req,res) => {
-        const newBook = new Bookmark(req.body);
+        const jobId = new Bookmark(req.body);
         try {
+            const job = await Job.findById(jobId);
+            if(!job) {
+                return res.status(404).job({error : "Không tìm thấy công việc"})
+            }
 
-            const book =  await newBook.save();
-            res.status(201).json(book)
+            const newBook =  await Bookmark({job:job,userId:req.user.id});
+            const saveBookmark = await newBook.save();
+            const {__v,updateAt,...newBookMarkInfo} = saveBookmark._doc;
+            res.status(201).json(newBookMarkInfo)
         } catch (error) {
             res.status(500).json(error)
         }

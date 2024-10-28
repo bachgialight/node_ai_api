@@ -5,7 +5,7 @@ const { verifyAndAuthorization,verifyToken,verifyAndAdmin} = require("../middlew
 
 //CREATE BOOKMARK
 
-router.post("/",bookmarkCotroller.crateBookmark);
+router.post("/",verifyAndAuthorization,bookmarkCotroller.crateBookmark);
 
 //DELETE BOOKMARK
 

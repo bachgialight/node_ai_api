@@ -35,6 +35,6 @@ app.use("/api/bookmarks/",bookmarkRoute);
 
 
 // Bắt đầu lắng nghe trên cổng và hostname
-app.listen(port, hostname, () => {
+app.listen(port, "0.0.0.0", () => {
     console.log(`Example app listening on port ${port}`);
 });
